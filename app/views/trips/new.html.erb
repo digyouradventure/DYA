@@ -1,0 +1,22 @@
+<%= form_for @trip do |f| %>
+  <div>
+    <%= f.label :date, "出発日" %><br>
+    <%= f.date_field :date %>
+  </div>
+  <div>
+    <%= f.label :number, "参加人数" %><br>
+    <%= f.text_field :number %>
+  <div>
+    <%= f.label :budget, "ご予算" %><br>
+    <%= f.select :budget,[["2万円", "20000"], ["3万円", "30000"], ["4万円", "40000"]] %>
+  </div>
+  <div>
+    <%= f.label :active, "アクティブさ" %><br>
+    <%= f.select :active, [["1"], ["2"], ["3"], ["4"], ["5"]] %>
+  </div>
+  <div>
+    <%= f.label :loose, "ゆったりさ" %><br>
+    <%= f.select :loose, [["1"], ["2"], ["3"], ["4"], ["5"]] %>
+  </div>
+  <%= f.submit "送信" %>
+<% end %>

@@ -1,0 +1,31 @@
+// Place all the styles related to the top controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.center{
+  margin-left: 10%;
+}
+
+.up{
+  position: relative;
+}
+
+.up h2{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.apply{
+  font-size: 100%;
+  margin-left: 40%;
+  border: 2px solid orange;
+}
+
+.container1{
+  margin-right: auto;
+}
+
+.container2{
+  margin-left: auto;
+}
