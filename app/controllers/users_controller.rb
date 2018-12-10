@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :move_to_index
+  before_action :move_to_index, only: [:edit, :update]
 
   def show
     @user = User.find(params[:id])

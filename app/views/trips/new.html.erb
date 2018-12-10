@@ -1,22 +1,56 @@
-<%= form_for @trip do |f| %>
-  <div>
-    <%= f.label :date, "出発日" %><br>
-    <%= f.date_field :date %>
-  </div>
-  <div>
-    <%= f.label :number, "参加人数" %><br>
-    <%= f.text_field :number %>
-  <div>
-    <%= f.label :budget, "ご予算" %><br>
-    <%= f.select :budget,[["2万円", "20000"], ["3万円", "30000"], ["4万円", "40000"]] %>
-  </div>
-  <div>
-    <%= f.label :active, "アクティブさ" %><br>
-    <%= f.select :active, [["1"], ["2"], ["3"], ["4"], ["5"]] %>
-  </div>
-  <div>
-    <%= f.label :loose, "ゆったりさ" %><br>
-    <%= f.select :loose, [["1"], ["2"], ["3"], ["4"], ["5"]] %>
-  </div>
-  <%= f.submit "送信" %>
+<div class="page-header text-center">
+  <h1>旅の入力フォーム</h1>
+</div>
+
+<p class="text-center">以下の質問に答えるだけで旅行が決まる<br>
+  さあ、未知なるアクティビティに出かけよう！
+</p>
+<%= form_for(@trip) do |f| %>
+  <p>
+    <%= f.label "出発日" %>
+    <%= f.date_field("date") %>
+  </p>
+
+  <p>
+    <%= f.label "出発時間" %><br>
+    6:00<%= f.range_field(:start_time, in: 6..15, step: 0.5) %>15:00
+  </p>
+
+  <p>
+    <%= f.label "解散時間" %><br>
+    12:00<%= f.range_field(:finish_time, in: 12..21, step: 0.5) %>21:00
+  </p>
+
+  <p>
+    <%= f.label "参加人数" %><br>
+    <%= f.text_field("number") %>
+  </p>
+
+  <p>
+    <%= f.label "やりたくないアクティビティ" %><br>
+    <% ngact = ["水泳", "マラソン", "禅", "その他"] %>
+    <% ngact.each do |a| %>
+      <label><%= f.check_box(:ngact, { multiple: true }, a, nil) %><%= a %></label>
+    <% end %>
+  </p>
+
+  <p>
+    <%= f.label "アクティブさ" %><br>
+    1<%= f.range_field(:active, in: 1..5, step: 1) %>5
+  </p>
+
+  <p>
+    <%= f.label "ゆったりさ" %><br>
+    1<%= f.range_field(:loose, in: 1..5, step: 1) %>5
+  </p>
+
+  <p>
+    <%= f.label "ご予算" %><br>
+    <%= f.radio_button :budget, "20000" %>20,000
+    <%= f.radio_button :budget, "30000" %>30,000
+    <%= f.radio_button :budget, "40000" %>40,000
+    <%= f.radio_button :budget, "50000" %>50,000
+  </p>
+
+  <p><%= f.submit "送信" %></p>
 <% end %>
